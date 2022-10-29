@@ -45,6 +45,46 @@ class SLL:
       while temp.next.next is not None:
         temp = temp.next
       temp.next = None
+  
+  def count_nodes(self):
+    count = 1
+    while self.head.next is not None:
+      count += 1
+      self.head = self.head.next
+    return count
+  
+  def sort(self):
+    current = self.head
+    temp = None
+    
+    while current is not None:
+      index = current.next
+      
+      while index is not None:
+        
+        if(current.value > index.value):
+          temp = current.value
+          current.value = index.value
+          index.value = temp
+          
+        index = index.next
+        
+      current = current.next
+      
+    del current
+    del temp
+    
+  def search(self, value):
+    while self.head.next is not None:
+      if(self.head.value == value):
+        return True
+      self.head = self.head.next
+    
+    if(self.head.value == value):
+      return True
+    
+    return False
+
       
       
 sll = SLL()
@@ -59,4 +99,7 @@ sll.insert_at_beginning(44)
 # ssl.delete_last_node()
 # ssl.delete_last_node()
 
-ssl.traversal()
+# sll.sort()
+# sll.traversal()
+
+print(sll.search(10))
